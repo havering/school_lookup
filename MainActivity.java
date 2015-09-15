@@ -68,18 +68,23 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("STATE", state);
 
         String assembled = assembleURL(addr, ci, state, z);
+
+        new CallAPI().execute(assembled);
     }
 
     public String getKey() {
         return c.getter();
     }
 
-    // need to convert state to two letter abbreviation to fit API structure
-    public String assembleURL(String a, String c, String s, String z) {
+    public String assembleURL(String a, String ci, String s, String z) {
         // API key held in config file but retrieved for API call
         final String key = getKey();
 
-        String urlString = apiURL + "key=" + key + "&address=" + a + "&city=" + c + "&state=" + s + "&zip=" + z + "&schoolType=public";
+        String converted = convertState(ci);
+
+        String urlString = apiURL + "key=" + key + "&address=" + a + "&city=" + converted + "&state=" + s + "&zip=" + z + "&schoolType=public";
+
+        return urlString;
     }
 
     private class CallAPI extends AsyncTask<String, String, String> {
@@ -116,4 +121,163 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    private class schoolResult {
+        
+    }
+
+    public String convertState(String statename) {
+        if (statename == "Alabama") {
+            return "AL";
+        }
+        if (statename == "Alaska") {
+            return "AK";
+        }
+        if (statename == "Arizona") {
+            return "AZ";
+        }
+        if (statename == "Arkansas") {
+            return "AR";
+        }
+        if (statename == "California") {
+            return "CA";
+        }
+        if (statename == "Colorado") {
+            return "CO";
+        }
+        if (statename == "Connecticut") {
+            return "CT";
+        }
+        if (statename == "Delaware") {
+            return "DE";
+        }
+        if (statename == "Florida") {
+            return "FL";
+        }
+        if (statename == "Georgia") {
+            return "GA";
+        }
+        if (statename == "Hawaii") {
+            return "HI";
+        }
+        if (statename == "Idaho") {
+            return "ID";
+        }
+        if (statename == "Illinois") {
+            return "IL";
+        }
+        if (statename == "Indiana") {
+            return "IN";
+        }
+        if (statename == "Iowa") {
+            return "IA";
+        }
+        if (statename == "Kansas") {
+            return "KS";
+        }
+        if (statename == "Kentucky") {
+            return "KY";
+        }
+        if (statename == "Louisiana") {
+            return "LA";
+        }
+        if (statename == "Maine") {
+            return "ME";
+        }
+        if (statename == "Maryland") {
+            return "MD";
+        }
+        if (statename == "Massachusetts") {
+            return "MA";
+        }
+        if (statename == "Michigan") {
+            return "MI";
+        }
+        if (statename == "Minnesota") {
+            return "MN";
+        }
+        if (statename == "Mississippi") {
+            return "MS";
+        }
+        if (statename == "Missouri") {
+            return "MO";
+        }
+        if (statename == "Montana") {
+            return "MT";
+        }
+        if (statename == "Nebraska") {
+            return "NE";
+        }
+        if (statename == "Nevada") {
+            return "NV";
+        }
+        if (statename == "New Hampshire") {
+            return "NH";
+        }
+        if (statename == "New Jersey") {
+            return "NJ";
+        }
+        if (statename == "New Mexico") {
+            return "NM";
+        }
+        if (statename == "New York") {
+            return "NY";
+        }
+        if (statename == "North Carolina") {
+            return "NC";
+        }
+        if (statename == "North Dakota") {
+            return "ND";
+        }
+        if (statename == "Ohio") {
+            return "OH";
+        }
+        if (statename == "Oklahoma") {
+            return "OK";
+        }
+        if (statename == "Oregon") {
+            return "OR";
+        }
+        if (statename == "Pennsylvania") {
+            return "PA";
+        }
+        if (statename == "Rhode Island") {
+            return "RI";
+        }
+        if (statename == "South Carolina") {
+            return "SC";
+        }
+        if (statename == "South Dakota") {
+            return "SD";
+        }
+        if (statename == "Tennessee") {
+            return "TN";
+        }
+        if (statename == "Texas") {
+            return "TX";
+        }
+        if (statename == "Utah") {
+            return "UT";
+        }
+        if (statename == "Vermont") {
+            return "VT";
+        }
+        if (statename == "Virginia") {
+            return "VA";
+        }
+        if (statename == "Washington") {
+            return "WA";
+        }
+        if (statename == "West Virginia") {
+            return "WV";
+        }
+        if (statename == "Wisconsin") {
+            return "WI";
+        }
+        if (statename == "Wyoming") {
+            return "WY";
+        }
+        return null;
+    }
+
 }
